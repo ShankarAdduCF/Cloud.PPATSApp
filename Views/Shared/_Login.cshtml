@@ -1,0 +1,133 @@
+﻿@{
+    Layout = null;
+    @model Cloud.PPATSApp.Models.ViewModels.EmployeeInfoViewModel;
+}
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="~/css/site.css" />
+
+<script type="text/javascript">
+    //function Login() {
+    //    //alert("ss");
+    //    //e.preventDefault();
+    //    var usernameVal = $("#txtUserName").val();
+    //    var pwdVal = $("#txtPassword").val();
+    //    //debugger;
+    //    //alert(usernameVal);
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "/Home/AuthenticateUser",
+    //        dataType: "json",
+    //        cache: false,
+    //        //data: JSON.stringify({
+    //        //    username: usernameVal,
+    //        //    password: pwdVal
+    //        //}),
+    //        data: {
+    //            username: usernameVal,
+    //            password: pwdVal
+    //        },
+    //        success: function (data, status, xhr) {
+    //            $('div').append('status: ' + status + ', data: ' + data);
+    //            console.log(data);
+    //        },
+    //        error: function (jqXhr, textStatus, errorMessage) {
+    //            debugger;
+    //            $('div').append('Error' + errorMessage);
+    //            //console.log("AJAX ERROR:", data);
+    //        }
+    //    });
+    //}
+    //$("#btnLogin").click(function () {
+    //    debugger;
+    //    e.preventDefault();
+    //    var usernameVal = $("#txtUserName").val();
+    //    var pwdVal = $("#txtPassword").val();
+    //    alert(usernameVal);
+    //    $.ajax({
+    //        type: "POST",
+    //        url: "/Home/AuthenticateUser",
+    //        dataType: "json",
+    //        data: {
+    //            username: usernameVal,
+    //            password: pwdVal
+    //        },
+    //        contentType: "application/json; charset=utf-8",
+    //        success: function (data, status, xhr) {
+    //              $('div').append('status: ' + status + ', data: ' + data);
+    //        },
+    //        //failure: function (response) { },
+    //        error: function (jqXhr, textStatus, errorMessage) {
+    //            $('div').append('Error' + errorMessage);
+    //        }
+    //    });
+    //});
+    $(document).ready(function () {
+        //$("#EmpUsername").val("sa");
+        //$("#EmpPassword").val("sa");
+    });
+</script>
+<style>
+</style>
+@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <table border="0" style="border:0px solid #DEDEDE;margin-top:50px;" align="center" cellpadding="2" cellspacing="2">
+        <tr>
+            <td align="center">
+                <table >
+                    <tr>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>UserName</td>
+                                    <td>:</td>
+                                    @*<td><input id="txtUserName" name="txtUserName" value="" /></td>, new { @Value = "sa" } *@
+                                    <td>@Html.TextBoxFor(a => a.EmpUsername)</td>
+                                    <td>@Html.ValidationMessageFor(a => a.EmpUsername, null, new { @class = "field-validation-errorr" })</td>
+                                </tr>
+                                <tr>
+                                    <td>Password</td>
+                                    <td>:</td>
+                                    @*<td><input id="txtPassword" name="txtPassword" type="password" value="" /></td>, new { @Value = "sa" }*@
+                                    <td>
+                                        @Html.PasswordFor(a => a.EmpPassword)
+                                    </td>
+                                    <td>
+                                        @Html.ValidationMessageFor(a => a.EmpPassword, null, new { @class = "field-validation-errorr" })
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" align="center">
+                                        <form method="post">
+                                            @*<button id="btnLogin" name="btnLogin" type="button" onclick="Login()">Login</button>*@
+                                            <input type="submit" value="Login" class="btn btn-primary" />
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="4" align="center">
+                                        <div></div>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td align="center">
+                <table>
+                    <tr>
+                        <td> <label id="lblMsg" name="lblMsg">@ViewBag.LoginMessage</label></td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+    
+  
+
+}
